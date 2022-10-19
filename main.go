@@ -2,20 +2,15 @@ package main
 
 import(
 	"net/http"
-	"encoding/json"
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
-    mux := http.NewServeMux()
-    mux.HandleFunc("/", func(w http.ResponseWriter, q *http.Request) {
-        message := map[string]string{
+    engine:= gin.Default()
+    engine.GET("/", func(c *gin.Context) {
+        c.JSON(http.StatusOK, gin.H{
             "message": "hello world",
-        }
-        jsonMessage, err := json.Marshal(message)
-        if err != nil {
-            panic(err.Error())
-        }
-        w.Write(jsonMessage)
+        })
     })
-    http.ListenAndServe("127.0.0.1:8080", mux)
+    engine.Run(":3000")
 }
