@@ -7,10 +7,10 @@ import(
 
 func main() {
     engine:= gin.Default()
+	engine.LoadHTMLGlob("views/*.html")
+	engine.Static("/static", "./static")
     engine.GET("/", func(c *gin.Context) {
-        c.JSON(http.StatusOK, gin.H{
-            "message": "hello world",
+        c.HTML(http.StatusOK, "index.html", gin.H{})
         })
-    })
-    engine.Run(":3000")
+    engine.Run(":8080")
 }
