@@ -1,21 +1,18 @@
 package main
 
 import(
-	"net/http"
-	"encoding/json"
+	"todo/routes"
+	// "todo/database"
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
-    mux := http.NewServeMux()
-    mux.HandleFunc("/", func(w http.ResponseWriter, q *http.Request) {
-        message := map[string]string{
-            "message": "hello world",
-        }
-        jsonMessage, err := json.Marshal(message)
-        if err != nil {
-            panic(err.Error())
-        }
-        w.Write(jsonMessage)
-    })
-    http.ListenAndServe("127.0.0.1:8080", mux)
+    engine:= gin.Default()
+	engine.LoadHTMLGlob("views/*.html")
+	engine.Static("/static", "./static")
+	// database.ConnectionDB()
+    engine.GET("/", routes.Home) 
+
+	engine.POST("/new", routes.Create)
+    engine.Run(":8080")
 }
