@@ -18,6 +18,6 @@ func ConnectionDB(){
     if err!= nil {
 		log.Fatal(err)
 	} else {
-		log.Println("Connected to the database")//接続が確立していたら出る内容
+		log.Println("Connected to the database")//接続が確立していたら
 	}
 }
