@@ -14,5 +14,20 @@
             <input type="submit" value=" 登録する">
         </form>
 
+        <ul>
+            {{range .tasklist}}
+            <p>{{.Id}}<b>{{.Task}}</b></p>
+            {{end}}
+            <!-- {{ range $i,$v := .tasklist }}
+            <li>
+            {{ $v }}
+            </li>
+            {{ end }} -->
+        </ul>
+        <!-- <ul>
+            {{ range .tasklist }}
+                <li>内容：{{ . }}</li>
+            {{end}}
+        </ul> -->
     </body>
 </html>
