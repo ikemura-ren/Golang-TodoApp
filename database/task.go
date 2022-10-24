@@ -3,9 +3,14 @@ package database
 import(
 	"database/sql"
 	"log"
-
+	"fmt"
 	_ "github.com/go-sql-driver/mysql"
 )
+
+type Task struct {
+	Id int
+	Task string
+}
 
 
 func InsertTask(task string){
@@ -31,4 +36,31 @@ func InsertTask(task string){
 		log.Fatal(err)
 	}
 	log.Println(lastInsertID)
+}
+
+func GetAllTasks() []Task {
+	db, err := sql.Open("mysql", "root:password@tcp(localhost:3306)/go_todo")
+    if err!= nil {
+        log.Println(err.Error())
+    }
+	defer db.Close()
+
+	rows, err := db.Query("SELECT * FROM todo")
+	if err!= nil {
+        log.Println(err.Error())
+    }
+	defer rows.Close()
+
+	var todo [] Task
+	for rows.Next() {
+		var id int
+		var task string
+        err := rows.Scan(&id, &task)
+		if err!= nil {
+            log.Fatal(err)
+		}
+		todo = append(todo, Task{id, task})
+	}
+	fmt.Println(todo)
+	return todo
 }

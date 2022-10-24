@@ -1,18 +1,20 @@
 package routes
 
 import (
-	"net/http"
 	"todo/database"
-
+	"fmt"
 	"github.com/gin-gonic/gin"
 )
 
 func Home(ctx *gin.Context) {
-    ctx.HTML(http.StatusOK, "index.html", gin.H{})
+	tasklist := database.GetAllTasks()
+	fmt.Println(tasklist)
+    ctx.HTML(200, "index.html", gin.H{"tasklist": tasklist})
 }
 
 func Create(ctx *gin.Context) {
     task := ctx.PostForm("task")
 	database.InsertTask(task)
-	ctx.Redirect(302, "/")
+	tasklist := database.GetAllTasks()
+	ctx.HTML(302, "/", gin.H{"tasklist": tasklist})
 }
