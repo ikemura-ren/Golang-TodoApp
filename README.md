@@ -3,11 +3,17 @@
 
 ### 動作環境
 機種名 : MacBook Pro
+<br>
 チップ : Apple M1 Pro
+<br>
 MacOS : Monterey
+<br>
 言語 : Golang
+<br>
 FW : gin
+<br>
 DB : MySQL 
+<br>
 
 こちらのbranchはFrontendが最低限のバックエンドロジックメインになっております。
 とりあえずロジックを見たいという方はこちらをpullしてみてください。
