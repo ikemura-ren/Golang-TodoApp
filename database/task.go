@@ -3,7 +3,6 @@ package database
 import(
 	"database/sql"
 	"log"
-	"fmt"
 	_ "github.com/go-sql-driver/mysql"
 )
 
@@ -61,6 +60,5 @@ func GetAllTasks() []Task {
 		}
 		todo = append(todo, Task{id, task})
 	}
-	fmt.Println(todo)
 	return todo
 }

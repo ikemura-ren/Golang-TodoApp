@@ -16,18 +16,9 @@
 
         <ul>
             {{range .tasklist}}
-            <p>{{.Id}}<b>{{.Task}}</b></p>
-            {{end}}
-            <!-- {{ range $i,$v := .tasklist }}
-            <li>
-            {{ $v }}
+            <li>番号：{{ .Id }}、タスク内容：{{ .Task }}
             </li>
-            {{ end }} -->
-        </ul>
-        <!-- <ul>
-            {{ range .tasklist }}
-                <li>内容：{{ . }}</li>
             {{end}}
-        </ul> -->
+        </ul>
     </body>
 </html>
