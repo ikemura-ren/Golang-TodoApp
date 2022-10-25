@@ -13,6 +13,8 @@ DB : MySQL
 とりあえずロジックを見たいという方はこちらをpullしてみてください。
 
 ### 動作状況
-<div><video controls src="https://www.loom.com/share/6301cbc84f184e15875129b083aa463c" muted="false"></video></div>
+https://user-images.githubusercontent.com/86938394/197725232-369d592c-744d-43ad-9df4-4047fb4442d0.mp4
+
+
 
 
