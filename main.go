@@ -12,5 +12,6 @@ func main() {
 	engine.Static("/static", "./static")
     engine.GET("/", routes.Home) 
 	engine.POST("/new", routes.Create)
+	engine.POST("/delete/:Id", routes.Delete)
     engine.Run(":8080")
 }
