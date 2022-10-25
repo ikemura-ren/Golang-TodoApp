@@ -8,7 +8,7 @@ import(
 func main() {
     engine:= gin.Default()
 	engine.LoadHTMLGlob("views/*.html")
-	engine.Static("/static", "./static")
+	engine.Static("/assets", "./assets/css")
     engine.GET("/", routes.Home) 
 	engine.POST("/new", routes.Create)
 	engine.GET("/detail/:Id", routes.Detail)
