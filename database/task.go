@@ -60,6 +60,44 @@ func GetAllTasks() []Task {
 	return todo
 }
 
+func GetOneTask(id int) Task {
+	db := ConnectionDB()
+    rows, err := db.Query("SELECT * FROM todo WHERE id=?", id)
+    if err!= nil {
+        log.Println(err.Error())
+    }
+	defer rows.Close()
+	var todo Task
+    for rows.Next() {
+        var id int
+		var task string
+        err := rows.Scan(&id, &task)
+		if err!= nil {
+            log.Fatal(err)
+        }
+		todo = Task{id, task}
+	}
+	return todo
+}
+
+func UpdateTask(id int, task string){
+    db := ConnectionDB()
+	stmt, err := db.Prepare("UPDATE todo SET task_name=? WHERE id=?")
+	if err!= nil {
+        log.Fatal(err)
+    }
+	defer stmt.Close()
+	res, err := stmt.Exec(task, id)
+	if err!= nil {
+        log.Fatal(err)
+    }
+	lastInsertID, err := res.LastInsertId()
+	if err!= nil {
+        log.Fatal(err)
+    }
+	log.Println(lastInsertID)
+}
+
 func DeleteTask(id int) {
 	db := ConnectionDB()
 	stmt, err := db.Prepare("DELETE FROM todo WHERE id=?")

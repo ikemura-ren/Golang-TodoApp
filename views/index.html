@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="description" content="サンプルアプリケーション">
-        <title>SampleApp</title>
+        <title>Golang-TodoApp</title>
         <link rel="stylesheet" href="//localhost:8080/assets/style.css">
     </head>
     <body>
@@ -17,8 +17,8 @@
         <ul>
             {{range .tasklist}}
             <li>タスク内容：{{ .Task }}
-                <label><a href="">編集</a></label>
-                ,<form method="POST" action="/delete/{{ .Id }}">
+                <label><a href="/detail/{{.Id}}">編集</a></label>
+                <form method="POST" action="/delete/{{ .Id }}">
                     <p><input type="submit" value="削除"></p>
                 </form>
             </li>
