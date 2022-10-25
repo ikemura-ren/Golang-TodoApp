@@ -18,7 +18,7 @@ func Create(ctx *gin.Context) {
 }
 
 func Delete(ctx *gin.Context) {
-	task_id := ctx.PostForm("task_id")
+	task_id := ctx.Param("Id")
 	id, err := strconv.Atoi(task_id)
         if err != nil {
             panic("ERROR")
