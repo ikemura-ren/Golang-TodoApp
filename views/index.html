@@ -18,7 +18,9 @@
             {{range .tasklist}}
             <li>タスク内容：{{ .Task }}
                 <label><a href="">編集</a></label>
-                <label><a href="">削除</a></label>
+                ,<form method="POST" action="/delete/{{ .Id }}">
+                    <p><input type="submit" value="削除"></p>
+                </form>
             </li>
             {{end}}
         </ul>

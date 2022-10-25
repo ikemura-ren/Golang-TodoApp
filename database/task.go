@@ -62,3 +62,28 @@ func GetAllTasks() []Task {
 	}
 	return todo
 }
+
+func DeleteTask(id int) {
+	db, err := sql.Open("mysql", "root:password@tcp(localhost:3306)/go_todo")
+	if err!= nil {
+        log.Println(err.Error())
+    }
+	defer db.Close()
+
+	stmt, err := db.Prepare("DELETE FROM todo WHERE id=?")
+	if err!= nil {
+        log.Println(err.Error())
+    }
+	defer stmt.Close()
+
+	res, err := stmt.Exec(id)
+    if err!= nil {
+		log.Fatal(err)
+	}
+
+	affected, err := res.RowsAffected()
+    if err!= nil {
+		log.Fatal(err)
+	}
+	log.Println(affected)
+}
