@@ -15,7 +15,7 @@ FW : gin
 DB : MySQL 
 <br>
 
-こちらのbranchはFrontendが最低限の実装となっており、バックエンドロジックメインになっております。
+こちらのbranchはFrontendが最低限の実装となっており、BackendのLogicメインになっております。
 <br>
 とりあえずロジックを見たいという方はこちらをpullしてみてください。
 
