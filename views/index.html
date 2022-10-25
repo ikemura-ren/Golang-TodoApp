@@ -16,7 +16,9 @@
 
         <ul>
             {{range .tasklist}}
-            <li>番号：{{ .Id }}、タスク内容：{{ .Task }}
+            <li>タスク内容：{{ .Task }}
+                <label><a href="">編集</a></label>
+                <label><a href="">削除</a></label>
             </li>
             {{end}}
         </ul>
