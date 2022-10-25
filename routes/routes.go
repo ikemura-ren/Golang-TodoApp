@@ -13,6 +13,5 @@ func Home(ctx *gin.Context) {
 func Create(ctx *gin.Context) {
     task := ctx.PostForm("task")
 	database.InsertTask(task)
-	tasklist := database.GetAllTasks()
-	ctx.HTML(200, "index.html", gin.H{"tasklist": tasklist})
+	ctx.Redirect(302, "/")
 }
