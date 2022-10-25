@@ -14,5 +14,15 @@
             <input type="submit" value=" 登録する">
         </form>
 
+        <ul>
+            {{range .tasklist}}
+            <li>タスク内容：{{ .Task }}
+                <label><a href="">編集</a></label>
+                ,<form method="POST" action="/delete/{{ .Id }}">
+                    <p><input type="submit" value="削除"></p>
+                </form>
+            </li>
+            {{end}}
+        </ul>
     </body>
 </html>
