@@ -2,7 +2,6 @@ package main
 
 import(
 	"todo/routes"
-	// "todo/database"
 	"github.com/gin-gonic/gin"
 )
 

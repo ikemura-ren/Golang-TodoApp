@@ -11,14 +11,16 @@ type Task struct {
 	Task string
 }
 
+func ConnectionDB() (db *sql.DB) {
+	db, err := sql.Open("mysql", "root:password@tcp(localhost:3306)/go_todo")
+    if err!= nil {
+        log.Fatal(err)
+    }
+	return db
+}
 
 func InsertTask(task string){
-	db, err := sql.Open("mysql", "root:password@tcp(localhost:3306)/go_todo")
-	if err!= nil {
-        log.Println(err.Error())
-    }
-	defer db.Close()
-
+	db := ConnectionDB()
 	stmt, err := db.Prepare("INSERT INTO todo VALUES(0, ?)")
 	if err!= nil {
         log.Println(err.Error())
@@ -38,12 +40,7 @@ func InsertTask(task string){
 }
 
 func GetAllTasks() []Task {
-	db, err := sql.Open("mysql", "root:password@tcp(localhost:3306)/go_todo")
-    if err!= nil {
-        log.Println(err.Error())
-    }
-	defer db.Close()
-
+	db := ConnectionDB()
 	rows, err := db.Query("SELECT * FROM todo")
 	if err!= nil {
         log.Println(err.Error())
@@ -64,12 +61,7 @@ func GetAllTasks() []Task {
 }
 
 func DeleteTask(id int) {
-	db, err := sql.Open("mysql", "root:password@tcp(localhost:3306)/go_todo")
-	if err!= nil {
-        log.Println(err.Error())
-    }
-	defer db.Close()
-
+	db := ConnectionDB()
 	stmt, err := db.Prepare("DELETE FROM todo WHERE id=?")
 	if err!= nil {
         log.Println(err.Error())
