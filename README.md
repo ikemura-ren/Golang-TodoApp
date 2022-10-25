@@ -13,5 +13,6 @@ DB : MySQL
 とりあえずロジックを見たいという方はこちらをpullしてみてください。
 
 ### 動作状況
-https://user-images.githubusercontent.com/86938394/197716873-f5fdf7ed-8671-44e1-8999-a23156d25198.mp4
+<div><video controls src="https://user-images.githubusercontent.com/86938394/197716873-f5fdf7ed-8671-44e1-8999-a23156d25198.mp4" muted="false"></video></div>
+
 
