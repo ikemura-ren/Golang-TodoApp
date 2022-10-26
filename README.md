@@ -20,4 +20,5 @@ DB : MySQL<br>
 https://user-images.githubusercontent.com/86938394/197980761-1d67eace-dfe5-4ec2-82f6-6d3e76ed137f.mp4
 
 
-
+<br>
+フロントエンドがほぼ死んでおりますが、後々ちゃんと作ります、、
