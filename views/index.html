@@ -19,7 +19,7 @@
             {{range .tasklist}}
             <tr>
                 <td>{{ .Task }}</td>
-                <td>none</td>
+                <td>{{  .Progress }}</td>
                 <td><a href="/detail/{{.Id}}" class="btn btn--orange btn--cubic btn--shadow">編集</a></td>
                 <td>
                     <form method="POST" action="/delete/{{ .Id }}">
