@@ -9,6 +9,7 @@ import(
 type Task struct {
 	Id int
 	Task string
+	Progress string
 }
 
 func ConnectionDB() (db *sql.DB) {
@@ -51,11 +52,12 @@ func GetAllTasks() []Task {
 	for rows.Next() {
 		var id int
 		var task string
-        err := rows.Scan(&id, &task)
+		var progress string
+        err := rows.Scan(&id, &task, &progress)
 		if err!= nil {
             log.Fatal(err)
 		}
-		todo = append(todo, Task{id, task})
+		todo = append(todo, Task{id, task, progress})
 	}
 	return todo
 }
@@ -71,23 +73,24 @@ func GetOneTask(id int) Task {
     for rows.Next() {
         var id int
 		var task string
-        err := rows.Scan(&id, &task)
+		var progress string
+        err := rows.Scan(&id, &task, &progress)
 		if err!= nil {
             log.Fatal(err)
         }
-		todo = Task{id, task}
+		todo = Task{id, task, progress}
 	}
 	return todo
 }
 
-func UpdateTask(id int, task string){
+func UpdateTask(id int, task string, progress string){
     db := ConnectionDB()
-	stmt, err := db.Prepare("UPDATE todo SET task_name=? WHERE id=?")
+	stmt, err := db.Prepare("UPDATE todo SET task_name=?, progress=? WHERE id=?")
 	if err!= nil {
         log.Fatal(err)
     }
 	defer stmt.Close()
-	res, err := stmt.Exec(task, id)
+	res, err := stmt.Exec(task,progress, id)
 	if err!= nil {
         log.Fatal(err)
     }

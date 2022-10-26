@@ -37,7 +37,8 @@ func Update(ctx *gin.Context) {
             panic("ERROR")
         }
 	task := ctx.PostForm("task")
-    database.UpdateTask(id, task)
+	progress := ctx.PostForm("progress")
+    database.UpdateTask(id, task, progress)
     ctx.Redirect(302, "/")
 	}
 
