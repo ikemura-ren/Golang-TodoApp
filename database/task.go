@@ -22,7 +22,7 @@ func ConnectionDB() (db *sql.DB) {
 
 func InsertTask(task string){
 	db := ConnectionDB()
-	stmt, err := db.Prepare("INSERT INTO todo VALUES(0, ?)")
+	stmt, err := db.Prepare("INSERT INTO todo VALUES(0, ?, DEFAULT)")
 	if err!= nil {
         log.Println(err.Error())
     }
